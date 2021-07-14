@@ -18,10 +18,8 @@ class TodoListView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request,*args, **kwargs):
-        single_todo = Todo.objects.all().first()
-        all_todos = Todo.objects.all()
-        serializer = TodoSerializer(all_todos,many=True)
-
+        todos = Todo.objects.all()
+        serializer = TodoSerializer(todos,many=True)
         return Response(serializer.data)
 
     def post(self, request,*args, **kwargs):
