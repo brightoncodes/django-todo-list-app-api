@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block style %}
+<style>
+  input {
+    display: inline-block;
+    width: 100%;
+    padding: 5px;
+  }
+  button {
+    padding: 8px 12px;
+  }
+  .list {
+    padding: 10px;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="content">
+  <a href="{% url 'todo:index' %}" class="navigator">Back</a>
+  <div class="list">
+    <form method="POST" action="{% url 'todo:create'%}">
+      {% csrf_token %} {{form.as_p}}
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+<script>
+  const userId = "{{user.id}}";
+  const userInput = document.getElementById("id_user");
+  userInput.value = userId;
+</script>
+{% endblock %}

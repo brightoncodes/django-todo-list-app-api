@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} Todo-List {% endblock %}</title>
+    <style>
+      * {
+        font-family: "poppins";
+        /* box-sizing: border-box; */
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        background-color: deepskyblue;
+      }
+
+      .content {
+        margin: auto;
+        max-width: 600px;
+      }
+      .list {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: orange;
+        border-radius: 5px;
+      }
+
+      .navigator {
+        display: inline-block;
+        text-decoration: none;
+        color: darkblue;
+        padding: 8px 12px;
+        background-color: yellow;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .navigator:hover {
+        display: inline-block;
+        text-decoration: none;
+        color: yellow;
+        padding: 8px 12px;
+        background-color: darkblue;
+      }
+      header {
+        height: 6vh;
+        background-color: rgb(2, 51, 143);
+        margin-bottom: 2rem;
+        color: rgb(240, 240, 240);
+      }
+
+      .nav-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80%;
+        margin: auto;
+        height: 100%;
+      }
+
+      .nav-bar h1 a {
+        text-decoration: none;
+        color: #ffff;
+      }
+
+      .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 50%;
+        list-style: none;
+      }
+
+      .nav-list li a {
+        text-decoration: none;
+        color: #ffff;
+      }
+    </style>
+    {% block style %} {% endblock %}
+  </head>
+  <body>
+    <header>
+      <nav class="nav-bar">
+        <h1>
+          <a href="{% url 'todo:index' %}">Todo-List</a>
+        </h1>
+        <ul class="nav-list">
+          <li>
+            <h2>{{user.username}}</h2>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div>{% block content %} {% endblock %}</div>
+  </body>
+</html>
