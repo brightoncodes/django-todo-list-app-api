@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'todo.apps.TodoConfig',
     'core.apps.CoreConfig',
     'rest_framework',
-    'store',
 ]
 
 MIDDLEWARE = [
@@ -75,27 +74,21 @@ WSGI_APPLICATION = 'todolist.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'NAME': 'idvel',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'PASSWORD': 'idvels'
-    },
-    'stores': {
-        'NAME': 'store',
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'postgres',
-        'PASSWORD': 'idvels'
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# DATABASES = {
+#     'default': {
+#         'NAME': 'idvel',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'USER': 'postgres',
+#         'PASSWORD': 'idvels'
+#     }
+# }
 
 
 # Password validation
