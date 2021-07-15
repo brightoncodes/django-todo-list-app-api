@@ -1,6 +1,6 @@
 from rest_framework import generics
 from .serializers import TodoSerializer
-from todo.models import Todo
+from .models import Todo
 
 
 class TodoCreateView(generics.CreateAPIView):
