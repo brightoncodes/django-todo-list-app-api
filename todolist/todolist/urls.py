@@ -5,9 +5,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('todos/',include('todo.urls')),
+    path('todos/',include('core.urls')),
     path('api-auth/',include('rest_framework.urls')),
-    path('posts/',include('core.urls')),
 ]
 
 
