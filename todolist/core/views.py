@@ -3,7 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer,TemplateHTMLRenderer
 from rest_framework.permissions import IsAuthenticated 
-from rest_framework import generics
+from rest_framework import generics , mixins
 from .serializers import TodoSerializer
 from todo.models import Todo
 from django.shortcuts import get_object_or_404
@@ -13,8 +13,38 @@ from rest_framework.decorators import (
 
 from store.models import Product
 
-# class base view for single and list items
-class TodoListView(APIView):
+class TodoCreateView(generics.CreateAPIView):
+
+    def post(self, request,*args, **kwargs):
+        return self.create(request,*args, **kwargs)
+
+class TodoListViewOne(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    generics.GenericAPIView):
+    serializer_class = TodoSerializer
+    queryset = Todo.objects.all()
+
+    def get(self, request,*args, **kwargs):
+        return self.list(request,*args, **kwargs)
+
+    def get_single(self, request, *args, **kwargs):
+        return self.retrieve(request,*args, **kwargs)
+
+    def post(self, request,*args, **kwargs):
+        return self.create(request,*args, **kwargs)
+
+    def update(self, request, *args, **kwargs):
+        return self.update(request,*args, **kwargs)
+
+    def delete(self, request,*args, **kwargs):
+        return self.delete(request,*args, **kwargs)
+
+
+class TodoListViewTwo(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request,*args, **kwargs):
